@@ -30,7 +30,7 @@ int _isBuiltIn(char *str);
 int custom_atoi(char *s);
 void _kill(char *lineptr, char *tmp, char **tok);
 void _exit_shell(char **tokens, char *line);
-void ctrlc(int signum);
+void handle_ctrlc(int signum);
 int check_for_delim(char c, const char *delim);
 char *_tokenize_string(char *src, const char *delim);
 char *_copy_string(char *dest, char *src);

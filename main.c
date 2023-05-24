@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 
 	(void)argc;
 
-	signal(SIGINT, ctrlc);
+	signal(SIGINT, handle_ctrlc);
 	Status = 0;
 	while (Status == 0)
 	{
