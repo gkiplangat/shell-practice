@@ -220,12 +220,12 @@ char *_tokenize_string(char *src, const char *delim)
 }
 
 /**
- *ctrlc - Control C handler.
+ *handle_ctrlc - Control C handler.
  *@signum: The signal number received.
  *
  *Return: Void.
  */
-void ctrlc(int signum)
+void handle_ctrlc(int signum)
 {
 	(void)signum;
 
