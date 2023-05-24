@@ -19,29 +19,29 @@ void prompt_user(void)
 
 char *user_input(void)
 {
-	char *line =  NULL;
+	char *lineptr =  NULL;
 	size_t len = 0;
 	/*int chars = 0;*/
 	ssize_t chars = 0;
 
 	/* inbuilt getline */
-	chars = getline(&line, &len, stdin);
+	chars = getline(&lineptr, &len, stdin);
 
 	/* custom get line */
 	/*chars = user_command(&line);*/
 	if (chars == EOF)
 	{
-		free(line);
+		free(lineptr);
 		exit(0);
 	}
-	if (line == NULL)
+	if (lineptr == NULL)
 	{
 		write(STDOUT_FILENO, "\n", 1);
-		free(line);
+		free(lineptr);
 		exit(-1);
 	}
 
-	return (line);
+	return (lineptr);
 }
 /**
  * _compare_strings - Compares two strings.
@@ -72,7 +72,7 @@ int _compare_strings(char *s1, char *s2)
 
 int main(int argc, char *argv[])
 {
-	char *line;
+	char *linep;
 	int Status;
 	char **tokens;
 
@@ -84,30 +84,30 @@ int main(int argc, char *argv[])
 	{
 		prompt_user();
 
-		line = user_input();
-		if (_compare_strings(line, "\n") == 0)
+		linep = user_input();
+		if (_compare_strings(linep, "\n") == 0)
 		{
 			tokens = NULL;
-			free(line);
+			free(linep);
 			continue;
 		}
-		tokens = _string_tokens(line);
+		tokens = _string_tokens(linep);
 		if (tokens[0] == NULL)
 		{
 			free(tokens);
-			free(line);
+			free(linep);
 			continue;
 		}
 
 		if (_compare_strings(tokens[0], "exit") == 0)
 		{
-			_exit_shell(tokens, line);
+			_exit_shell(tokens, linep);
 		}
 		else
 		{
 			Status =  _execute(tokens, argv[0]);
 		}
-		free(line);
+		free(linep);
 		free(tokens);
 	}
 	return (Status);
