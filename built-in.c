@@ -81,13 +81,13 @@ int _executeBuiltIn(char **tokens)
 	return (1);
 }
 /**
- * _exitSimpleShell - Exits the shell
+ * _exit_shell - Exits the shell
  * and frees memory.
  * @tokens: Double pointer to words split from line.
  * @line: Pointer to string got using getLine().
  * Return: void.
  */
-void _exitSimpleShell(char **tokens, char *line)
+void _exit_shell(char **tokens, char *line)
 {
 	int status;
 
