@@ -123,11 +123,11 @@ int _write_char(char c)
 
 
 /**
- * c_atoi - Custom atoi converts string to int.
+ * custom_atoi - Custom atoi converts string to int.
  * @s: string.
  * Return: Number if success, -1 if string contains non-numbers.
  */
-int c_atoi(char *s)
+int custom_atoi(char *s)
 {
 	int i = 0;
 	unsigned int num = 0;
