@@ -31,9 +31,9 @@ int custom_atoi(char *s);
 void _kill(char *lineptr, char *tmp, char **tok);
 void _exit_shell(char **tokens, char *line);
 void ctrlc(int signum);
-int is_delim(char c, const char *delim);
-char *_strtok(char *src, const char *delim);
-char *_strcpy(char *dest, char *src);
+int check_for_delim(char c, const char *delim);
+char *_tokenize_string(char *src, const char *delim);
+char *_copy_string(char *dest, char *src);
 ssize_t get_line(char **str);
 int handle_path(char **tokens);
 int if_file_exists(char *s);
@@ -42,6 +42,6 @@ int execute2(char **tokens, char *path, char *args);
 char *var_build(char *var_name, char *var_value);
 int _setenv(char *var_name, char *var_value);
 int _unsetenv(char *var_name);
-char *_strdup(char *str);
+char *_duplicate_string(char *str);
 
 #endif

@@ -145,7 +145,7 @@ int custom_atoi(char *s)
 
 
 /**
- * _strcpy - Copies the string pointed to by src,
+ * _copy_string - Copies the string pointed to by src,
  * including the terminating null byte (\0),
  * to the buffer pointed to by dest.
  * @dest: Copy source to this buffer.
@@ -153,7 +153,7 @@ int custom_atoi(char *s)
  * Return: Copy of original source.
  */
 
-char *_strcpy(char *dest, char *src)
+char *_copy_string(char *dest, char *src)
 {
 	int i, len;
 
@@ -166,13 +166,13 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 /**
- * is_delim - Check if char is equal to delim.
+ * check_for_delim - Check if char is equal to delim.
  * @c: character.
  * @delim: " "
  * Return: 0 if no match, 1 if matched.
  */
 
-int is_delim(char c, const char *delim)
+int check_for_delim(char c, const char *delim)
 {
 	while (delim && *delim)
 	{
@@ -186,13 +186,13 @@ int is_delim(char c, const char *delim)
 }
 
 /**
- * _strtok - Mimics strtok, which tokenizes a string and turn to array.
+ * _tokenize_string - Mimics strtok, which tokenizes a string and turn to array.
  * @src: String from getline.
  * @delim: " ";
  * Return: Individual token in array format.
  */
 
-char *_strtok(char *src, const char *delim)
+char *_tokenize_string(char *src, const char *delim)
 {
 	static char *s;
 	static unsigned int i;
@@ -204,7 +204,7 @@ char *_strtok(char *src, const char *delim)
 		s = src;
 		for (i = 0; s[i]; i++)
 		{
-			if (is_delim(s[i], delim))
+			if (check_for_delim(s[i], delim))
 				s[i] = '\0';
 		}
 	}
@@ -264,7 +264,7 @@ ssize_t get_line(char **str)
 		{
 			i++;
 			*str = malloc(sizeof(char) * i);
-			*str = _strcpy(*str, buff);
+			*str = _copy_string(*str, buff);
 			size = i;
 			t = 1;
 		}
@@ -277,11 +277,11 @@ ssize_t get_line(char **str)
 	return (size);
 }
 /**
- *  _strdup - Duplicates string.
+ *  _duplicate_string - Duplicates string.
  *  @str: String to duplicate.
  *  Return: Pointer to duplicated string in allocated memory.
  */
-char *_strdup(char *str)
+char *_duplicate_string(char *str)
 {
 	char *duplicate_str;
 	int i, len = 0;

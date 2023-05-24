@@ -22,9 +22,9 @@ int _setenv(char *var_name, char *var_value)
 			var_new = var_build(var_name, var_value);
 			/*Not sure but wanted to clear its mem b4 writing*/
 			environ[i] = NULL;
-			environ[i] = _strdup(var_new);
+			environ[i] = _duplicate_string(var_new);
 			free(environ[i]);
-			environ[i] = _strdup(var_new);
+			environ[i] = _duplicate_string(var_new);
 			free(var_new);
 			return (0);
 		}
@@ -33,7 +33,7 @@ int _setenv(char *var_name, char *var_value)
 	/*adding a variable that never existed before*/
 	var_new = var_build(var_name, var_value);
 	free(environ[i]);
-	environ[i] = _strdup(var_new);
+	environ[i] = _duplicate_string(var_new);
 	i++;
 	environ[i] = NULL;
 	var_new = NULL;
