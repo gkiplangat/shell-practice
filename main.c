@@ -73,14 +73,14 @@ int _compare_strings(char *s1, char *s2)
 int main(int argc, char *argv[])
 {
 	char *linep;
-	int Status;
+	int status;
 	char **tokens;
 
 	(void)argc;
 
 	signal(SIGINT, handle_ctrlc);
-	Status = 0;
-	while (Status == 0)
+	status = 0;
+	while (status == 0)
 	{
 		prompt_user();
 
@@ -105,10 +105,10 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			Status =  _execute(tokens, argv[0]);
+			status =  _execute(tokens, argv[0]);
 		}
 		free(linep);
 		free(tokens);
 	}
-	return (Status);
+	return (status);
 }
