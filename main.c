@@ -13,11 +13,11 @@ void prompt_user(void)
 }
 
 /**
- * read_line - Gets a typed line from the command line as a string.
+ * user_input - Get user input from the command line as a string.
  * Return: Pointer to the line(string).
  */
 
-char *read_line(void)
+char *user_input(void)
 {
 	char *line =  NULL;
 	size_t len = 0;
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 	{
 		prompt_user();
 
-		line = read_line();
+		line = user_input();
 		if (_strcmp(line, "\n") == 0)
 		{
 			tokens = NULL;

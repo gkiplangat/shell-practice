@@ -17,7 +17,7 @@
 extern char **environ;
 void _puts(char *str);
 void prompt_user(void);
-char *read_line(void);
+char *user_input(void);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char **_strtotokens(char *str);
