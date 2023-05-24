@@ -2,45 +2,45 @@
 
 /**
  * _execute - Executes a file.
- * @tokens: Split string into tokens from stdin.
- * @args: Program arguments.
- * Return: 0 if success. otherwise - 1.
+ * @tokens: split string into tokens from stdin.
+ * @args: the program arguments.
+ * Return: 0 success. otherwise - 1.
  */
 int _execute(char **tokens, char *args)
 {
-	char *err1, *err2, *err3;
-	pid_t child_pid;
+	char *first_err, *second_err, *thirrd_err;
+	pid_t child_processId;
 	int status;
-	char *path;
-	/* check if first token is a built in */
+	char *path_var;
+	/* check if the first token is a built in or not */
 	if (_isBuiltIn(*tokens) == 0)
 	{
 		status = _executeBuiltIn(tokens);
 		return (status);
 	}
-	/* if path wasn't entered e.g ls, pwd, etc */
-	path = path_builder(tokens);
-	if (path != NULL)
+	 
+	path_var = path_var_builder(tokens);
+	if (path_var != NULL)
 	{
-		status = execute2(tokens, path, args);
+		status = execute2(tokens, path_var, args);
 		return (status);
 	}
-	/* if path was entered e.g /bin/ls */
-	child_pid = fork();
-	if (child_pid == -1)
+	
+	child_processId = fork();
+	if (child_processId == -1)
 	{
 		perror("Error: ");
 		return (1);
 	}
-	if (child_pid == 0)
+	if (child_processId == 0)
 	{
 
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			err1 = _concat_strings(*tokens, ": No such file or directory\n");
-			err2 = _concat_strings(args, ":");
-			err3 = _concat_strings(err2, err1);
-			write(STDERR_FILENO, err3, _string_length(err3));
+			first_err = _concat_strings(*tokens, ": No such file or directory\n");
+			second_err = _concat_strings(args, ":");
+			thirrd_err = _concat_strings(second_err, first_err);
+			write(STDERR_FILENO, thirrd_err, _string_length(thirrd_err));
 			free(tokens);
 			exit(EXIT_FAILURE);
 		}
