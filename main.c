@@ -17,15 +17,15 @@ int main(int argc, char *argv[])
 
 	signal(SIGINT, ctrlc);
 	Status = 0;
-	while (Status == 0)
+while (Status == 0)
 	{
-		/**
+/**
  * prompt - Print prompt.
  * Return: Void.
  */
 void prompt(void);
-	{
-	if (isatty(STDIN_FILENO))
+{
+		if (isatty(STDIN_FILENO))
 		{
 			write(STDOUT_FILENO, "#cisfun$ ", 9);
 		}
