@@ -59,11 +59,11 @@ unsigned int _check_white_space(char *s)
 }
 
 /**
- * _strtotokens - splits a string into words.
+ * _string_tokens - splits a string into words.
  * @str: Pointer to string.
  * Return: Pointer to array of words.
  */
-char **_strtotokens(char *str)
+char **_string_tokens(char *str)
 {
 	int i = 0;
 	const char delimeter[] = " \t\n";

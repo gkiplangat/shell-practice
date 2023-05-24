@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 			free(line);
 			continue;
 		}
-		tokens = _strtotokens(line);
+		tokens = _string_tokens(line);
 		if (tokens[0] == NULL)
 		{
 			free(tokens);

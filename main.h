@@ -20,7 +20,7 @@ void prompt_user(void);
 char *user_input(void);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
-char **_strtotokens(char *str);
+char **_string_tokens(char *str);
 int _execute(char **tokens, char *args);
 void _printenv(void);
 int _putchar(char c);
