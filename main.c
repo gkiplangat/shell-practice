@@ -19,7 +19,17 @@ int main(int argc, char *argv[])
 	Status = 0;
 	while (Status == 0)
 	{
-		prompt();
+		/**
+ * prompt - Print prompt.
+ * Return: Void.
+ */
+void prompt(void);
+	{
+	if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
+		}
+	}
 
 		line = read_line();
 		if (_strcmp(line, "\n") == 0)
