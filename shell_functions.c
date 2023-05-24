@@ -196,8 +196,8 @@ char *_tokenize_string(char *src, const char *delim)
 {
 	static char *s;
 	static unsigned int i;
-	char *result = NULL;
-	int is_space = 0;
+	char *res = NULL;
+	int space = 0;
 
 	if (src)
 	{
@@ -211,12 +211,12 @@ char *_tokenize_string(char *src, const char *delim)
 
 	if (s == NULL || *s == '\0')
 		return (NULL);
-	result = s;
+	res = s;
 	i = _string_length(s);
 	if (s[i] == '\0' && _string_length(s) > 0)
-		is_space = 1;
-	s = s + _string_length(s) + is_space;
-	return (result);
+		space = 1;
+	s = s + _string_length(s) + space;
+	return (res);
 }
 
 /**
@@ -277,13 +277,13 @@ ssize_t user_command(char **str)
 	return (size);
 }
 /**
- *  _duplicate_string - Duplicates string.
+ *  _dup_string - Duplicates string.
  *  @str: String to duplicate.
  *  Return: Pointer to duplicated string in allocated memory.
  */
 char *_duplicate_string(char *str)
 {
-	char *duplicate_str;
+	char *dup_str;
 	int i, length = 0;
 
 	if (str == NULL)
@@ -291,14 +291,14 @@ char *_duplicate_string(char *str)
 	while (str[length])
 		length++;
 	length++; /* add null terminator to lengthgth */
-	duplicate_str = malloc(sizeof(char) * length);
-	if (duplicate_str == NULL)
+	dup_str = malloc(sizeof(char) * length);
+	if (dup_str == NULL)
 		return (NULL);
 	i = 0;
 	while (i < length)
 	{
-		duplicate_str[i] = str[i];
+		dup_str[i] = str[i];
 		i++;
 	}
-	return (duplicate_str);
+	return (dup_str);
 }
