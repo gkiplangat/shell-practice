@@ -68,7 +68,7 @@ int execute2(char **tokens, char *path, char *args)
 			err1 = _strcat(*tokens, ": No such file or directory\n");
 			err2 = _strcat(args, ":");
 			err3 = _strcat(err2, err1);
-			write(STDERR_FILENO, err3, _strlen(err3));
+			write(STDERR_FILENO, err3, _string_length(err3));
 			free(tokens);
 			exit(EXIT_FAILURE);
 		}

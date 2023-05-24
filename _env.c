@@ -12,7 +12,7 @@ int _setenv(char *var_name, char *var_value)
 	size_t name_len;
 	char *var_new;
 
-	name_len = _strlen(var_name);
+	name_len = _string_length(var_name);
 	i = 0;
 	/*updating an existing variable*/
 	while (environ[i])
@@ -51,7 +51,7 @@ char *var_build(char *var_name, char *var_value)
 	char *new_var;
 	size_t var_len;
 
-	var_len = _strlen(var_name) + _strlen(var_value) + 2;
+	var_len = _string_length(var_name) + _string_length(var_value) + 2;
 	new_var = malloc(sizeof(char) * var_len);
 	if (new_var == NULL)
 	{
@@ -77,7 +77,7 @@ int _unsetenv(char *var_name)
 	char **env_temp;
 	size_t name_len;
 
-	name_len = _strlen(var_name);
+	name_len = _string_length(var_name);
 	while (environ[i])
 	{
 		if (strncmp(environ[i], var_name, name_len) == 0)

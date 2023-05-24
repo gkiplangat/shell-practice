@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _strlen - Returns length of a string.
+ * _string_length - Returns length of a string.
  * @s: Pointer to string.
  * Return: Length of s.
  */
-int _strlen(char *s)
+int _string_length(char *s)
 {
 	int index;
 
@@ -28,7 +28,7 @@ char *_strcat(char *dest, char *src)
 	int destLen;
 
 	destAddress = dest;
-	destLen = _strlen(dest);
+	destLen = _string_length(dest);
 	destAddress = destAddress + destLen;
 	while (*src != '\0')
 	{
@@ -212,10 +212,10 @@ char *_strtok(char *src, const char *delim)
 	if (s == NULL || *s == '\0')
 		return (NULL);
 	result = s;
-	i = _strlen(s);
-	if (s[i] == '\0' && _strlen(s) > 0)
+	i = _string_length(s);
+	if (s[i] == '\0' && _string_length(s) > 0)
 		is_space = 1;
-	s = s + _strlen(s) + is_space;
+	s = s + _string_length(s) + is_space;
 	return (result);
 }
 
