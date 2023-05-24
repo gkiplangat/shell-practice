@@ -37,9 +37,9 @@ int _execute(char **tokens, char *args)
 
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			err1 = _strcat(*tokens, ": No such file or directory\n");
-			err2 = _strcat(args, ":");
-			err3 = _strcat(err2, err1);
+			err1 = _concat_strings(*tokens, ": No such file or directory\n");
+			err2 = _concat_strings(args, ":");
+			err3 = _concat_strings(err2, err1);
 			write(STDERR_FILENO, err3, _string_length(err3));
 			free(tokens);
 			exit(EXIT_FAILURE);

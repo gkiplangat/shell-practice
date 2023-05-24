@@ -19,7 +19,7 @@ void _puts(char *str);
 void prompt_user(void);
 char *user_input(void);
 int _string_length(char *s);
-char *_strcat(char *dest, char *src);
+char *_concat_strings(char *dest, char *src);
 char **_string_tokens(char *str);
 int _execute(char **tokens, char *args);
 void _printenv(void);

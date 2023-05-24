@@ -60,9 +60,9 @@ char *var_build(char *var_name, char *var_value)
 	}
 	memset(new_var, 0, var_len);
 	/*Data in the form: var_name=var_value*/
-	new_var = _strcat(new_var, var_name);
-	new_var = _strcat(new_var, "=");
-	new_var = _strcat(new_var, var_value);
+	new_var = _concat_strings(new_var, var_name);
+	new_var = _concat_strings(new_var, "=");
+	new_var = _concat_strings(new_var, var_value);
 
 	return (new_var);
 }

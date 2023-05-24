@@ -17,12 +17,12 @@ int _string_length(char *s)
 	return (index);
 }
 /**
- * _strcat - Concatenates two strings.
+ * _concat_strings - Concatenates two strings.
  * @dest: Pointer to string to be conatenated upon.
  * @src: Pointer to string to append to dest.
  * Return: Pointer to dest.
  */
-char *_strcat(char *dest, char *src)
+char *_concat_strings(char *dest, char *src)
 {
 	char *destAddress;
 	int destLen;
@@ -249,7 +249,7 @@ ssize_t get_line(char **str)
 		if (i == -1) /* check if read errored */
 			return (-1);
 
-		buff[i] = '\0'; /* terminate buff with \0 to use with _strcat */
+		buff[i] = '\0'; /* terminate buff with \0 to use with _concat_strings */
 
 		n = 0; /* last loop if \n is found in the stdin read */
 		while (buff[n] != '\0')
@@ -268,10 +268,10 @@ ssize_t get_line(char **str)
 			size = i;
 			t = 1;
 		}
-		else /* _realloc via _strcat with each loop */
+		else /* _realloc via _concat_strings with each loop */
 		{
 			size += i;
-			*str = _strcat(*str, buff);
+			*str = _concat_strings(*str, buff);
 		}
 	}
 	return (size);
