@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * prompt - Print prompt.
+ * prompt_user - Print a cue message to the user.
  * Return: Void.
  */
-void prompt(void)
+void prompt_user(void)
 {
 	if (isatty(STDIN_FILENO))
 	{
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 	Status = 0;
 	while (Status == 0)
 	{
-		prompt();
+		prompt_user();
 
 		line = read_line();
 		if (_strcmp(line, "\n") == 0)
