@@ -24,19 +24,19 @@ int _string_length(char *s)
  */
 char *_concat_strings(char *dest, char *src)
 {
-	char *destAddress;
-	int destLen;
+	char *dest_address;
+	int dest_length;
 
-	destAddress = dest;
-	destLen = _string_length(dest);
-	destAddress = destAddress + destLen;
+	dest_address = dest;
+	dest_length = _string_length(dest);
+	dest_address = dest_address + dest_length;
 	while (*src != '\0')
 	{
-		*destAddress = *src;
+		*dest_address = *src;
 		src++;
-		destAddress++;
+		dest_address++;
 	}
-	*destAddress = '\0';
+	*dest_address = '\0';
 
 	return (dest);
 }
@@ -66,7 +66,7 @@ unsigned int _check_space(char *s)
 char **_string_tokens(char *str)
 {
 	int i = 0;
-	const char delimeter[] = " \t\n";
+	const char delim[] = " \t\n";
 	int space = _check_space(str);
 	char **tokens = malloc(sizeof(char *) * (space + 1));
 	char *token;
@@ -78,12 +78,12 @@ char **_string_tokens(char *str)
 		exit(1);
 	}
 
-	token = strtok(str, delimeter);
+	token = strtok(str, delim);
 
 	while (token != NULL)
 	{
 		tokens[i] = token;
-		token = strtok(NULL, delimeter);
+		token = strtok(NULL, delim);
 		i++;
 	}
 	tokens[i] =  NULL;
@@ -130,17 +130,17 @@ int _write_char(char c)
 int custom_atoi(char *s)
 {
 	int i = 0;
-	unsigned int num = 0;
+	unsigned int number = 0;
 
 	while (s[i] != '\0')
 	{
-		if (s[i] >= '0' && s[i] <= '9') /* calculate num */
-			num = num * 10 + (s[i] - '0');
-		if (s[i] > '9' || s[i] < '0') /* account for non-numbers */
+		if (s[i] >= '0' && s[i] <= '9') /* calculate number */
+			number = number * 10 + (s[i] - '0');
+		if (s[i] > '9' || s[i] < '0') /* account for non-numberbers */
 			return (-1);
 		i++;
 	}
-	return (num);
+	return (number);
 }
 
 
@@ -155,12 +155,12 @@ int custom_atoi(char *s)
 
 char *_copy_string(char *dest, char *src)
 {
-	int i, len;
+	int i, length;
 
-	for (len = 0; src[len] != '\0'; len++)
+	for (length = 0; src[length] != '\0'; length++)
 		;
 
-	for (i = 0; i <= len; i++)
+	for (i = 0; i <= length; i++)
 		dest[i] = src[i];
 
 	return (dest);
@@ -284,18 +284,18 @@ ssize_t user_command(char **str)
 char *_duplicate_string(char *str)
 {
 	char *duplicate_str;
-	int i, len = 0;
+	int i, length = 0;
 
 	if (str == NULL)
 		return (NULL);
-	while (str[len])
-		len++;
-	len++; /* add null terminator to length */
-	duplicate_str = malloc(sizeof(char) * len);
+	while (str[length])
+		length++;
+	length++; /* add null terminator to lengthgth */
+	duplicate_str = malloc(sizeof(char) * length);
 	if (duplicate_str == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < length)
 	{
 		duplicate_str[i] = str[i];
 		i++;
