@@ -44,13 +44,13 @@ char *user_input(void)
 	return (line);
 }
 /**
- * _strcmp - Compares two strings.
+ * _compare_strings - Compares two strings.
  * @s1: Pointer to First string.
  * @s2: Pointer to Second string.
  * Return: 0 if they are equal, Otherwise - positive value.
  */
 
-int _strcmp(char *s1, char *s2)
+int _compare_strings(char *s1, char *s2)
 {
 	int i = 0;
 
@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 		prompt_user();
 
 		line = user_input();
-		if (_strcmp(line, "\n") == 0)
+		if (_compare_strings(line, "\n") == 0)
 		{
 			tokens = NULL;
 			free(line);
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		if (_strcmp(tokens[0], "exit") == 0)
+		if (_compare_strings(tokens[0], "exit") == 0)
 		{
 			_exitSimpleShell(tokens, line);
 		}
