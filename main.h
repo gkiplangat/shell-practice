@@ -23,7 +23,7 @@ char *_concat_strings(char *dest, char *src);
 char **_string_tokens(char *str);
 int _execute(char **tokens, char *args);
 void _printenv(void);
-int _putchar(char c);
+int _write_char(char c);
 int _compare_strings(char *s1, char *s2);
 int _executeBuiltIn(char **tokens);
 int _isBuiltIn(char *str);

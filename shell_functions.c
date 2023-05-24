@@ -104,19 +104,19 @@ void _print_string(char *str)
 
 	while (str[i] != '\0')
 	{
-		_putchar(str[i]);
+		_write_char(str[i]);
 		i++;
 	}
 
-	_putchar('\n');
+	_write_char('\n');
 }
 
 /**
- * _putchar - Writes the character c to stdout.
+ * _write_char - Writes the character c to stdout.
  * @c: The character to print.
  * Return: On success - 1.
  */
-int _putchar(char c)
+int _write_char(char c)
 {
 	return (write(1, &c, 1));
 }
