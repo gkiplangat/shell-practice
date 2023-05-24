@@ -2,9 +2,9 @@
 
 
 /**
- * if_file_exists - Checks file status.
- * @s: Pointer to file name.
- * Return: 0 if success, else non zero.
+ * if_file_exists - checks for file status.
+ * @s: pointer to file name.
+ * Return: 0 success, else non zero number.
  */
 int if_file_exists(char *s)
 {
@@ -15,60 +15,60 @@ int if_file_exists(char *s)
 
 
 /**
- * path_builder - Constructs a path to binaries.
- * @tokens: Double pointer to tokens.
+ * path_builder - Create path to binaries.
+ * @tokens: double pointer to tokens.
  * Return: Return - path, else - NULL.
  */
 char *path_builder(char **tokens)
 {
-	char path1[100] = "/bin/";
-	char path2[100] = "/usr/bin/";
+	char path_one[100] = "/bin/";
+	char path_two[100] = "/usr/bin/";
 
-	char *finalPath1;
-	char *finalPath2;
+	char *finalpath_one;
+	char *finalpath_two;
 
-	finalPath1 = _concat_strings(path1, tokens[0]);
+	finalpath_one = _concat_strings(path_one, tokens[0]);
 
-	if ((if_file_exists(finalPath1) == 0))
-		return (finalPath1);
+	if ((if_file_exists(finalpath_one) == 0))
+		return (finalpath_one);
 
-	finalPath2 = _concat_strings(path2, tokens[0]);
-	if ((if_file_exists(finalPath2) == 0))
-		return (finalPath2);
+	finalpath_two = _concat_strings(path_two, tokens[0]);
+	if ((if_file_exists(finalpath_two) == 0))
+		return (finalpath_two);
 
 	return (NULL);
 }
 
 /**
- * execute2 - Executes a file.
- * @tokens: Split string into tokens from stdin.
- * @path: Path from path_builder function.
- * @args: Program arguments.
+ * execute2 - executes a file.
+ * @tokens: Split string from stdin into tokens.
+ * @path: path from path_builder function.
+ * @args: program arguments.
  * Return: 0 - on success, else - 1.
  */
 int execute2(char **tokens, char *path, char *args)
 {
-	char *err1, *err2, *err3;
-	pid_t child_pid;
+	char *first_err, *second_err, *third_err;
+	pid_t child_processId;
 	int status;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	child_processId = fork();
+	if (child_processId == -1)
 	{
 		perror("Error: ");
 		return (1);
 	}
 
-	if (child_pid == 0)
+	if (child_processId == 0)
 	{
 		tokens[0] = path;
 
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			err1 = _concat_strings(*tokens, ": No such file or directory\n");
-			err2 = _concat_strings(args, ":");
-			err3 = _concat_strings(err2, err1);
-			write(STDERR_FILENO, err3, _string_length(err3));
+			first_err = _concat_strings(*tokens, ": No such file or directory\n");
+			second_err = _concat_strings(args, ":");
+			third_err = _concat_strings(second_err, first_err);
+			write(STDERR_FILENO, third_err, _string_length(third_err));
 			free(tokens);
 			exit(EXIT_FAILURE);
 		}

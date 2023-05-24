@@ -12,7 +12,7 @@ int _execute(char **tokens, char *args)
 	pid_t child_processId;
 	int status;
 	char *path;
-	/* check if the first token is a built in or not */
+	 
 	if (_isBuiltIn(*tokens) == 0)
 	{
 		status = _executeBuiltIn(tokens);
@@ -25,7 +25,7 @@ int _execute(char **tokens, char *args)
 		status = execute2(tokens, path, args);
 		return (status);
 	}
-	/* if path was entered e.g /bin/ls */
+	 
 	child_processId = fork();
 	if (child_processId == -1)
 	{
