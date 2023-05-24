@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _string_length - Returns length of a string.
- * @s: Pointer to string.
- * Return: Length of s.
+ * _string_length - return string length.
+ * @s: pointer to string.
+ * Return: string length.
  */
 int _string_length(char *s)
 {
@@ -17,10 +17,10 @@ int _string_length(char *s)
 	return (char_index);
 }
 /**
- * _concat_strings - Concatenates two strings.
- * @dest: Pointer to string to be conatenated upon.
- * @src: Pointer to string to append to dest.
- * Return: Pointer to dest.
+ * _concat_strings - join strings.
+ * @dest: pointer to destination string.
+ * @src: pointer to  source string to.
+ * Return: pointer to dest.
  */
 char *_concat_strings(char *dest, char *src)
 {
@@ -43,7 +43,7 @@ char *_concat_strings(char *dest, char *src)
 
 /**
  * _check_space - checks for white space.
- * @s: Pointer to string to check.
+ * @s: pointer to string to be check.
  * Return: integer.
  */
 unsigned int _check_space(char *s)
@@ -60,8 +60,8 @@ unsigned int _check_space(char *s)
 
 /**
  * _string_tokens - splits a string into words.
- * @str: Pointer to string.
- * Return: Pointer to array of words.
+ * @str: pointer to string to be splited.
+ * Return: pointer to array of words.
  */
 char **_string_tokens(char *str)
 {
@@ -94,8 +94,8 @@ char **_string_tokens(char *str)
 
 
 /**
- * _print_string - prints a string, followed by a new line, to stdout.
- * @str: string to print.
+ * _print_string - prints a string,and a new line, to stdout.
+ * @str: string to be printed.
  */
 
 void _print_string(char *str)
@@ -112,9 +112,9 @@ void _print_string(char *str)
 }
 
 /**
- * _write_char - Writes the character c to stdout.
- * @c: The character to print.
- * Return: On success - 1.
+ * _write_char - print the character c to stdout.
+ * @c: character to be printed.
+ * Return: - 1 on success.
  */
 int _write_char(char c)
 {
@@ -123,9 +123,9 @@ int _write_char(char c)
 
 
 /**
- * custom_atoi - Custom atoi converts string to int.
- * @s: string.
- * Return: Number if success, -1 if string contains non-numbers.
+ * custom_atoi - converts string to int.
+ * @s: string to be converted.
+ * Return: number if success and -1 if string contains non-numbers.
  */
 int custom_atoi(char *s)
 {
@@ -134,9 +134,9 @@ int custom_atoi(char *s)
 
 	while (s[i] != '\0')
 	{
-		if (s[i] >= '0' && s[i] <= '9') /* calculate number */
+		if (s[i] >= '0' && s[i] <= '9')  
 			number = number * 10 + (s[i] - '0');
-		if (s[i] > '9' || s[i] < '0') /* account for non-numberbers */
+		if (s[i] > '9' || s[i] < '0')  
 			return (-1);
 		i++;
 	}
@@ -145,12 +145,10 @@ int custom_atoi(char *s)
 
 
 /**
- * _copy_string - Copies the string pointed to by src,
- * including the terminating null byte (\0),
- * to the buffer pointed to by dest.
+ * _copy_string - copy in src to dest,
  * @dest: Copy source to this buffer.
  * @src: This is the source to copy.
- * Return: Copy of original source.
+ * Return: a copy original source.
  */
 
 char *_copy_string(char *dest, char *src)
@@ -166,10 +164,10 @@ char *_copy_string(char *dest, char *src)
 	return (dest);
 }
 /**
- * check_for_delim - Check if char is equal to delim.
- * @c: character.
+ * check_for_delim - check if char is equal to delim.
+ * @c: character to be check.
  * @delim: " "
- * Return: 0 if no match, 1 if matched.
+ * Return: 0 if no match else 1.
  */
 
 int check_for_delim(char c, const char *delim)
@@ -186,10 +184,10 @@ int check_for_delim(char c, const char *delim)
 }
 
 /**
- * _tokenize_string - Mimics strtok, which tokenizes a string and turn to array.
- * @src: String from getline.
+ * _tokenize_string - split string into array of strings.
+ * @src: string to be splited.
  * @delim: " ";
- * Return: Individual token in array format.
+ * Return: each token in array format.
  */
 
 char *_tokenize_string(char *src, const char *delim)
@@ -220,10 +218,10 @@ char *_tokenize_string(char *src, const char *delim)
 }
 
 /**
- *handle_ctrlc - Control C handler.
- *@signum: The signal number received.
+ *handle_ctrlc - handler for control c.
+ *@signum: signal number received.
  *
- *Return: Void.
+ *Return: void.
  */
 void handle_ctrlc(int signum)
 {
@@ -234,24 +232,24 @@ void handle_ctrlc(int signum)
 
 
 /**
- * user_command - Stores into malloced buffer the user's command into shell.
- * @str: Buffer.
- * Return: Number of characters read.
+ * user_command - stores users commands.
+ * @str: buffer to store commands.
+ * Return: the number of characters read.
  */
 ssize_t user_command(char **str)
 {
 	ssize_t i = 0, size = 0, t = 0, t2 = 0, n = 0;
 	char buff[1024];
 
-	/* read while there's stdin greater than buffsize; -1 to add a '\0' */
+	 
 	while (t2 == 0 && (i = read(STDIN_FILENO, buff, 1024 - 1)))
 	{
-		if (i == -1) /* check if read errored */
+		if (i == -1)  
 			return (-1);
 
-		buff[i] = '\0'; /* terminate buff with \0 to use with _concat_strings */
+		buff[i] = '\0';  
 
-		n = 0; /* last loop if \n is found in the stdin read */
+		n = 0;  
 		while (buff[n] != '\0')
 		{
 			if (buff[n] == '\n')
@@ -259,8 +257,8 @@ ssize_t user_command(char **str)
 			n++;
 		}
 
-		/* copy what's read to buff into user_command's buffer */
-		if (t == 0) /* malloc the first time */
+		 
+		if (t == 0)  
 		{
 			i++;
 			*str = malloc(sizeof(char) * i);
@@ -268,7 +266,7 @@ ssize_t user_command(char **str)
 			size = i;
 			t = 1;
 		}
-		else /* _realloc via _concat_strings with each loop */
+		else  
 		{
 			size += i;
 			*str = _concat_strings(*str, buff);
@@ -277,9 +275,9 @@ ssize_t user_command(char **str)
 	return (size);
 }
 /**
- *  _dup_string - Duplicates string.
- *  @str: String to duplicate.
- *  Return: Pointer to duplicated string in allocated memory.
+ *  _dup_string - duplicates string.
+ *  @str: string to be duplicated.
+ *  Return: pointer to duplicated string.
  */
 char *_duplicate_string(char *str)
 {
@@ -290,7 +288,7 @@ char *_duplicate_string(char *str)
 		return (NULL);
 	while (str[length])
 		length++;
-	length++; /* add null terminator to lengthgth */
+	length++;
 	dup_str = malloc(sizeof(char) * length);
 	if (dup_str == NULL)
 		return (NULL);

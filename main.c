@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * prompt_user - Print a cue message to the user.
- * Return: Void.
+ * prompt_user - rint a cue message to the user.
+ * Return: void.
  */
 void prompt_user(void)
 {
@@ -21,14 +21,12 @@ char *user_input(void)
 {
 	char *lineptr =  NULL;
 	size_t len = 0;
-	/*int chars = 0;*/
 	ssize_t chars = 0;
 
-	/* inbuilt getline */
+	/* get user inputs */
 	chars = getline(&lineptr, &len, stdin);
 
-	/* custom get line */
-	/*chars = user_command(&line);*/
+	
 	if (chars == EOF)
 	{
 		free(lineptr);
@@ -44,10 +42,10 @@ char *user_input(void)
 	return (lineptr);
 }
 /**
- * _compare_strings - Compares two strings.
- * @s1: Pointer to First string.
- * @s2: Pointer to Second string.
- * Return: 0 if they are equal, Otherwise - positive value.
+ * _compare_strings - compares two strings.
+ * @s1: first string.
+ * @s2: second string.
+ * Return: 0 if equal, otherwise positive value.
  */
 
 int _compare_strings(char *s1, char *s2)
@@ -64,10 +62,10 @@ int _compare_strings(char *s1, char *s2)
 }
 
 /**
- * main - Entry to Simple Shell program.
- * @argc: Number of arguments.
- * @argv: Pointer to array of arguments.
- * Return: Always 0 if success else 1.
+ * main - point.
+ * @argc: argument count.
+ * @argv: argument vector.
+ * Return: 0 on success else 1.
  */
 
 int main(int argc, char *argv[])
@@ -94,6 +92,7 @@ int main(int argc, char *argv[])
 		tokens = _string_tokens(linep);
 		if (tokens[0] == NULL)
 		{
+			/*free memory*/
 			free(tokens);
 			free(linep);
 			continue;
@@ -107,6 +106,7 @@ int main(int argc, char *argv[])
 		{
 			status =  _execute(tokens, argv[0]);
 		}
+		/*free memory*/
 		free(linep);
 		free(tokens);
 	}
