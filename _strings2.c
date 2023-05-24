@@ -10,25 +10,7 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 
-/**
- * _strcmp - Compares two strings.
- * @s1: Pointer to First string.
- * @s2: Pointer to Second string.
- * Return: 0 if they are equal, Otherwise - positive value.
- */
 
-int _strcmp(char *s1, char *s2)
-{
-	int i = 0;
-
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
-}
 /**
  * c_atoi - Custom atoi converts string to int.
  * @s: string.
