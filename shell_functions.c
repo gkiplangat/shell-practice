@@ -42,11 +42,11 @@ char *_concat_strings(char *dest, char *src)
 }
 
 /**
- * _check_white_space - checks for white space.
+ * _check_space - checks for white space.
  * @s: Pointer to string to check.
  * Return: integer.
  */
-unsigned int _check_white_space(char *s)
+unsigned int _check_space(char *s)
 {
 	int i, count = 0;
 
@@ -67,7 +67,7 @@ char **_string_tokens(char *str)
 {
 	int i = 0;
 	const char delimeter[] = " \t\n";
-	int space = _check_white_space(str);
+	int space = _check_space(str);
 	char **tokens = malloc(sizeof(char *) * (space + 1));
 	char *token;
 
