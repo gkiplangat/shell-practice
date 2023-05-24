@@ -234,11 +234,11 @@ void handle_ctrlc(int signum)
 
 
 /**
- * get_line - Stores into malloced buffer the user's command into shell.
+ * user_command - Stores into malloced buffer the user's command into shell.
  * @str: Buffer.
  * Return: Number of characters read.
  */
-ssize_t get_line(char **str)
+ssize_t user_command(char **str)
 {
 	ssize_t i = 0, size = 0, t = 0, t2 = 0, n = 0;
 	char buff[1024];
@@ -259,7 +259,7 @@ ssize_t get_line(char **str)
 			n++;
 		}
 
-		/* copy what's read to buff into get_line's buffer */
+		/* copy what's read to buff into user_command's buffer */
 		if (t == 0) /* malloc the first time */
 		{
 			i++;

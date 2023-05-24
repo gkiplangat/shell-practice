@@ -28,7 +28,7 @@ char *user_input(void)
 	chars = getline(&line, &len, stdin);
 
 	/* custom get line */
-	/*chars = get_line(&line);*/
+	/*chars = user_command(&line);*/
 	if (chars == EOF)
 	{
 		free(line);

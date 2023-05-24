@@ -34,7 +34,7 @@ void handle_ctrlc(int signum);
 int check_for_delim(char c, const char *delim);
 char *_tokenize_string(char *src, const char *delim);
 char *_copy_string(char *dest, char *src);
-ssize_t get_line(char **str);
+ssize_t user_command(char **str);
 int handle_path(char **tokens);
 int if_file_exists(char *s);
 char *path_builder(char **tokens);
