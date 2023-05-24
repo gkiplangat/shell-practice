@@ -11,7 +11,7 @@ int _execute(char **tokens, char *args)
 	char *first_err, *second_err, *thirrd_err;
 	pid_t child_processId;
 	int status;
-	char *path_var;
+	char *path;
 	/* check if the first token is a built in or not */
 	if (_isBuiltIn(*tokens) == 0)
 	{
@@ -19,13 +19,13 @@ int _execute(char **tokens, char *args)
 		return (status);
 	}
 	 
-	path_var = path_var_builder(tokens);
-	if (path_var != NULL)
+	path = path_builder(tokens);
+	if (path != NULL)
 	{
-		status = execute2(tokens, path_var, args);
+		status = execute2(tokens, path, args);
 		return (status);
 	}
-	
+	/* if path was entered e.g /bin/ls */
 	child_processId = fork();
 	if (child_processId == -1)
 	{
