@@ -7,14 +7,14 @@
  */
 int _string_length(char *s)
 {
-	int index;
+	int char_index;
 
-	index = 0;
-	while (s[index] != '\0')
+	char_index = 0;
+	while (s[char_index] != '\0')
 	{
-		index++;
+		char_index++;
 	}
-	return (index);
+	return (char_index);
 }
 /**
  * _concat_strings - Concatenates two strings.
