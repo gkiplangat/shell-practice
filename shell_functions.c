@@ -94,11 +94,11 @@ char **_string_tokens(char *str)
 
 
 /**
- * _puts - prints a string, followed by a new line, to stdout.
+ * _print_string - prints a string, followed by a new line, to stdout.
  * @str: string to print.
  */
 
-void _puts(char *str)
+void _print_string(char *str)
 {
 	unsigned long i = 0;
 

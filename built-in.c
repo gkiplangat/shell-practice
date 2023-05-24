@@ -11,7 +11,7 @@ void _printenv(void)
 
 	while (environ[i])
 	{
-		_puts(environ[i]);
+		_print_string(environ[i]);
 		i++;
 	}
 }

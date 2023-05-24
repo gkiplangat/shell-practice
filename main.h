@@ -15,7 +15,7 @@
 
 
 extern char **environ;
-void _puts(char *str);
+void _print_string(char *str);
 void prompt_user(void);
 char *user_input(void);
 int _string_length(char *s);
