@@ -1,93 +1,93 @@
 #include "main.h"
 
 /**
- * _setenv - updates or adds an environment variable.
+ * _setenv - updates environment variable.
  * @var_name:variable name.
  * @var_value:variable value.
- * Return:0 - success, otherwise -1.
+ * Return:0 on success else -1.
  */
 int _setenv(char *var_name, char *var_value)
 {
 	int i = 0;
-	size_t name_len;
-	char *var_new;
+	size_t name_length;
+	char *new_variable;
 
-	name_len = _string_length(var_name);
+	name_length = _string_length(var_name);
 	i = 0;
-	/*updating an existing variable*/
+	
 	while (environ[i])
 	{
-		if (strncmp(environ[i], var_name, name_len) == 0)
+		if (strncmp(environ[i], var_name, name_length) == 0)
 		{
-			var_new = var_build(var_name, var_value);
-			/*Not sure but wanted to clear its mem b4 writing*/
+			new_variable = var_build(var_name, var_value);
+			
 			environ[i] = NULL;
-			environ[i] = _duplicate_string(var_new);
+			environ[i] = _duplicate_string(new_variable);
 			free(environ[i]);
-			environ[i] = _duplicate_string(var_new);
-			free(var_new);
+			environ[i] = _duplicate_string(new_variable);
+			free(new_variable);
 			return (0);
 		}
 		i++;
 	}
-	/*adding a variable that never existed before*/
-	var_new = var_build(var_name, var_value);
+	
+	new_variable = var_build(var_name, var_value);
 	free(environ[i]);
-	environ[i] = _duplicate_string(var_new);
+	environ[i] = _duplicate_string(new_variable);
 	i++;
 	environ[i] = NULL;
-	var_new = NULL;
+	new_variable = NULL;
 
 	return (0);
 }
 /**
- * var_build - Builds an environment variable from its name and value.
- * @var_name: Variable name.
- * @var_value: Variable value.
- * Return: String containing full environment variable.
+ * var_build - Builds an environment
+ * @var_name: variable name.
+ * @var_value: variable value.
+ * Return:full environment variable.
  */
 char *var_build(char *var_name, char *var_value)
 {
-	char *new_var;
-	size_t var_len;
+	char *new_variable;
+	size_t variable_length;
 
-	var_len = _string_length(var_name) + _string_length(var_value) + 2;
-	new_var = malloc(sizeof(char) * var_len);
-	if (new_var == NULL)
+	variable_length = _string_length(var_name) + _string_length(var_value) + 2;
+	new_variable = malloc(sizeof(char) * variable_length);
+	if (new_variable == NULL)
 	{
 		perror("Error: Insufficient memory\n");
 		return (NULL);
 	}
-	memset(new_var, 0, var_len);
-	/*Data in the form: var_name=var_value*/
-	new_var = _concat_strings(new_var, var_name);
-	new_var = _concat_strings(new_var, "=");
-	new_var = _concat_strings(new_var, var_value);
+	memset(new_variable, 0, variable_length);
+	 
+	new_variable = _concat_strings(new_variable, var_name);
+	new_variable = _concat_strings(new_variable, "=");
+	new_variable = _concat_strings(new_variable, var_value);
 
-	return (new_var);
+	return (new_variable);
 }
 /**
- * _unsetenv - Removes an environment variable.
- * @var_name: Variable name.
- * Return: 0 if successful -1,otherwise - -1.
+ * _unsetenv - removes an environment variable.
+ * @var_name: variable name.
+ * Return: 0 success else -1.
  */
 int _unsetenv(char *var_name)
 {
 	int i = 0;
-	char **env_temp;
-	size_t name_len;
+	char **env_tmp;
+	size_t name_length;
 
-	name_len = _string_length(var_name);
+	name_length = _string_length(var_name);
 	while (environ[i])
 	{
-		if (strncmp(environ[i], var_name, name_len) == 0)
+		if (strncmp(environ[i], var_name, name_length) == 0)
 		{
-			env_temp = environ;
-			free(env_temp[0]);
+			env_tmp = environ;
+			free(env_tmp[0]);
 			do {
-				env_temp[0] = env_temp[1];
-				env_temp++;
-			} while (*env_temp);
+				env_tmp[0] = env_tmp[1];
+				env_tmp++;
+			} while (*env_tmp);
 		}
 		i++;
 	}
