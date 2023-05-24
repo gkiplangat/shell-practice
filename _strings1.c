@@ -58,6 +58,38 @@ unsigned int _check_white_space(char *s)
 	return (count);
 }
 
+/**
+ * _strtotokens - splits a string into words.
+ * @str: Pointer to string.
+ * Return: Pointer to array of words.
+ */
+char **_strtotokens(char *str)
+{
+	int i = 0;
+	const char delimeter[] = " \t\n";
+	int space = _check_white_space(str);
+	char **tokens = malloc(sizeof(char *) * (space + 1));
+	char *token;
+
+	if (!tokens)
+	{
+		free(tokens);
+		fprintf(stderr, "sh: allocation error\n");
+		exit(1);
+	}
+
+	token = strtok(str, delimeter);
+
+	while (token != NULL)
+	{
+		tokens[i] = token;
+		token = strtok(NULL, delimeter);
+		i++;
+	}
+	tokens[i] =  NULL;
+
+	return (tokens);
+}
 
 
 
